@@ -7,10 +7,10 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('WineWeb')
+    .setDescription('The wineweb API description')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('wines')
     .build();  
     
   const document = SwaggerModule.createDocument(app, config);

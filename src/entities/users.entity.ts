@@ -13,9 +13,8 @@
     } from 'typeorm';
     import { Address } from './addresses.entity';
     import { Producer } from './producers.entity';
-import { Transfer } from './transfers.entity';
     import { Type } from './types.entity';
-import { Wine } from './wines.entity';
+    import { Wine } from './wines.entity';
 
     @Index('fk_user_producer_id', ['userProducerId'], {})
     @Index('fk_user_type_id', ['userTypeId'], {})
