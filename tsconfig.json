@@ -10,6 +10,26 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@enums/*": [
+        "src/enums/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@repositories/*": [
+        "src/repositories/*"
+      ],
+      "@dto/*": [
+        "src/dto/*"
+      ],
+      "@configs/*": [
+        "src/configs/*"
+      ],
+      "@entities/*": [
+        "src/entities/*"
+      ]
+    }
   }
 }
