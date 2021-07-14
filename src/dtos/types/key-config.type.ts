@@ -1,0 +1,10 @@
+export type KeyConfig =
+'NODE_ENV' |
+'SERVER_PORT' |
+'APPLICATION_NAME'|
+'DB_LOGGING_ENABLE' |
+'DB_HOST' |
+'DB_PORT' |
+'DB_NAME' |
+'DB_USERNAME' |
+'DB_PASS' 
