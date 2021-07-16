@@ -3,19 +3,25 @@ import {
   Column,
   Entity,
   OneToOne,
-  PrimaryGeneratedColumn,
 } from 'typeorm';
+import { ColumnNumericTransformer } from './transformer/column-numeric.transformer';
 import { User } from './users.entity';
 
-@Entity('producer')
+@Entity('producers')
 export class Producer extends BaseEntity {
-  @PrimaryGeneratedColumn({ type: 'bigint', name: 'producer_id' })
+  @Column({ 
+    type: 'bigint',
+    name: 'producer_id',
+    primary: true,
+		generated: 'increment',
+    transformer: new ColumnNumericTransformer()
+  })
   producerId: number;
 
   @Column('varchar', { name: 'producer_symbol', length: 4 })
   producerSymbol: string;
 
-  @Column('varchar', { name: 'producer_serial_count' })
+  @Column('bigint', { name: 'producer_serial_count' })
   producerSerialCount: number;
 
   @OneToOne(() => User, (user:User) => user.ProducerId)

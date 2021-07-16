@@ -1,10 +1,17 @@
 import { BaseEntity, Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { ColumnNumericTransformer } from './transformer/column-numeric.transformer';
 import { User } from './users.entity';
 
 @Index('fk_wine_owner_user_id',['wineOwnerUserId'],{})
-@Entity("wine")
+@Entity("wines")
 export class Wine extends BaseEntity {
-    @PrimaryGeneratedColumn({ type: "bigint", name: "wine_id" })
+    @Column({ 
+        type: "bigint",
+        name: "wine_id",
+        primary: true,
+		generated: 'increment',
+        transformer: new ColumnNumericTransformer()
+    })
     wineId : number
 
     @Column("varchar",{name : "wine_serial_id", length: 6})
