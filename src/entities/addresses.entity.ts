@@ -1,9 +1,16 @@
 import { BaseEntity, Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { ColumnNumericTransformer } from './transformer/column-numeric.transformer';
 import { User } from './users.entity';
 
-@Entity("address")
+@Entity("addresses")
 export class Address extends BaseEntity {
-    @PrimaryGeneratedColumn({ type: "bigint", name: "address_id" })
+    @Column({
+        type: "bigint",
+        name: "address_id",
+        primary: true,
+		generated: 'increment',
+        transformer: new ColumnNumericTransformer()
+    })
     addressId : number
 
     @Column("varchar",{name : "address_address", length: 255})

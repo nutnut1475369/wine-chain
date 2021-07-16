@@ -1,80 +1,72 @@
-import { IsEmail, IsEnum, IsNotEmpty, MaxLength } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
 import { UserRoleEnum } from '@enums/user-role.enum';
 import { UserTypeEnum } from '@enums/user-type.enum';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateUserDto {
 
     @ApiProperty()
 	@IsNotEmpty()
 	@MaxLength(255)
-	userName: string;
+	name: string;
 
     @ApiProperty()
 	@IsNotEmpty()
 	@MaxLength(255)
-	userLastname: string;
+	lastname: string;
 
     @ApiProperty()
     @IsNotEmpty()
 	@IsEmail()
 	@MaxLength(255)
-    userEmail: string;
+    email: string;
 
     @ApiProperty()
     @IsNotEmpty()
-    userPassword: number;
+    password: string;
 
-    @ApiProperty()
-    @IsNotEmpty()
+    @ApiPropertyOptional()
+    @IsOptional()
 	@MaxLength(4)
-    userProducerSymbol: string;
+    producersymbol: string;
 
     @ApiProperty()
     @IsNotEmpty()
     @IsEnum(UserRoleEnum, { each: true })
-    userRoleId: UserRoleEnum;
+    role: UserRoleEnum;
 
     @IsNotEmpty()
-	@IsEmail()
     @IsEnum(UserTypeEnum, { each: true })
-    userTypeId: number;
+    type: UserTypeEnum;
 
     @ApiProperty()
     @IsNotEmpty()
 	@MaxLength(255)
-    userAddressAddress: string;
+    address: string;
 
     @ApiProperty()
     @IsNotEmpty()
 	@MaxLength(255)
-    userAddressStreetName: string;
+    streetname: string;
 
     @ApiProperty()
     @IsNotEmpty()
 	@MaxLength(255)
-    userAddressState: string;
+    state: string;
 
     @ApiProperty()
     @IsNotEmpty()
 	@MaxLength(255)
-    userAddressPostcode: string;
+    postcode: string;
 
     @ApiProperty()
     @IsNotEmpty()
 	@MaxLength(100)
-    userAddressCity: string;
+    city: string;
 
     @ApiProperty()
     @IsNotEmpty()
 	@MaxLength(100)
-    userAddressCountry: string;
+    country: string;
 
-    @ApiProperty()
-    @IsNotEmpty()
-    createdAt: Date;
-
-    @ApiProperty()
-    @IsNotEmpty()
-    updatedAt: Date;
 }

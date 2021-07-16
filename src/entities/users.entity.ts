@@ -1,4 +1,5 @@
     import { UserRoleEnum } from '@enums/user-role.enum';
+import { UserTypeEnum } from '@enums/user-type.enum';
     import {
     BaseEntity,
     Column,
@@ -13,13 +14,12 @@
     } from 'typeorm';
     import { Address } from './addresses.entity';
     import { Producer } from './producers.entity';
-    import { Type } from './types.entity';
     import { Wine } from './wines.entity';
 
     @Index('fk_user_producer_id', ['userProducerId'], {})
     @Index('fk_user_type_id', ['userTypeId'], {})
     @Index('fk_user_address_id', ['userAddressId'], {})
-    @Entity('user')
+    @Entity('users')
     export class User extends BaseEntity {
     @PrimaryGeneratedColumn({ type: 'bigint', name: 'user_id' })
     userId: number;
@@ -40,13 +40,13 @@
     userRoleId: UserRoleEnum;
 
     @Column('bigint', { name: 'user_type_id' })
-    userTypeId: number;
+    userTypeId: UserTypeEnum;
 
     @Column('bigint', { name: 'user_address_id' })
     userAddressId: number;
 
-    @Column('bigint', { name: 'user_password' })
-    userPassword: number;
+    @Column('varchar', { name: 'user_password' })
+    userPassword: string;
 
     @Column('timestamp', {
         name: 'user_created_at',
@@ -73,18 +73,6 @@
     )
     @JoinColumn([{ name: 'address_id' }])
     AddressId: Address;
-
-    @ManyToOne(
-        () => Type, 
-        (type) => type.users, 
-        {
-            onDelete: 'RESTRICT',
-            onUpdate: 'RESTRICT',
-        }
-    )
-    @JoinColumn([{ name: 'type_id', referencedColumnName: 'typeId' }])
-    TypeId: Type;
-
 
     @OneToMany(
         () => Wine,

@@ -3,7 +3,7 @@ import { User } from './users.entity';
 
 @Index('fk_transfer_user_id_req',['transferUserIdReq'],{})
 @Index('fk_transfer_user_id_tar',['transferUserIdTar'],{})
-@Entity("transfer")
+@Entity("transfers")
 export class Transfer extends BaseEntity {
     @PrimaryGeneratedColumn({ type: "bigint", name: "transfer_id" })
     transferId : number
