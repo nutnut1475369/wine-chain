@@ -21,7 +21,7 @@ export class CreateUsersService {
 
   async create(createUserDto: CreateUserDto): Promise<any> {
     if (
-      (await this.usersRepository.findDupicateUser(createUserDto.email)) !==
+      (await this.usersRepository.findEmail(createUserDto.email)) !==
       undefined
     ) {
       throw new HttpException(

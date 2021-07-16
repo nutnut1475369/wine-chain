@@ -12,6 +12,6 @@ export class AuthController {
   ): Promise<any> {
     const jwt = await this.authService.signin(signinUserDto);
     response.cookie('jwt', jwt, { httpOnly: true });
-    return jwt;
+    return { data: jwt };
   }
 }
