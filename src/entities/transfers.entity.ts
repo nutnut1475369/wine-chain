@@ -17,7 +17,7 @@ export class Transfer extends BaseEntity {
     @Column("varchar",{name : "transfer_wine_id", length: 255})
     transferWineId : number
     
-    @Column("bigint",{name : "transfer_datetime"})
+    @Column("timestamp",{name : "transfer_datetime"})
     transferDatetime : Date
 
 }

@@ -16,6 +16,7 @@ export class AuthService{
             delete data.userPassword
             const payload = {
                 email:data.userEmail,
+                userid:data.userId,
                 role:data.userRoleId,
                 type:data.userTypeId
             }
