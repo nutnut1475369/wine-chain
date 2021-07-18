@@ -1,19 +1,18 @@
     import { UserRoleEnum } from '@enums/user-role.enum';
-import { UserTypeEnum } from '@enums/user-type.enum';
+    import { UserTypeEnum } from '@enums/user-type.enum';
     import {
     BaseEntity,
     Column,
     Entity,
     Index,
     JoinColumn,
-    ManyToMany,
-    ManyToOne,
     OneToMany,
     OneToOne,
     PrimaryGeneratedColumn,
     } from 'typeorm';
     import { Address } from './addresses.entity';
     import { Producer } from './producers.entity';
+import { ColumnNumericTransformer } from './transformer/column-numeric.transformer';
     import { Wine } from './wines.entity';
 
     @Index('fk_user_producer_id', ['userProducerId'], {})
@@ -21,7 +20,13 @@ import { UserTypeEnum } from '@enums/user-type.enum';
     @Index('fk_user_address_id', ['userAddressId'], {})
     @Entity('users')
     export class User extends BaseEntity {
-    @PrimaryGeneratedColumn({ type: 'bigint', name: 'user_id' })
+    @Column({ 
+        type: "bigint",
+        name: "user_id",
+        primary: true,
+		generated: 'increment',
+        transformer: new ColumnNumericTransformer()
+    })
     userId: number;
 
     @Column('varchar', { name: 'user_name', length: 255 })
@@ -33,16 +38,28 @@ import { UserTypeEnum } from '@enums/user-type.enum';
     @Column('varchar', { name: 'user_email', length: 255 })
     userEmail: string;
 
-    @Column('bigint', { name: 'user_producer_id' })
+    @Column('bigint', { 
+        name: 'user_producer_id',
+        transformer: new ColumnNumericTransformer()
+    })
     userProducerId: number;
 
-    @Column('bigint', { name: 'user_role_id' })
+    @Column('bigint', { 
+        name: 'user_role_id',
+        transformer: new ColumnNumericTransformer()
+    })
     userRoleId: UserRoleEnum;
 
-    @Column('bigint', { name: 'user_type_id' })
+    @Column('bigint', { 
+        name: 'user_type_id',
+        transformer: new ColumnNumericTransformer() 
+    })
     userTypeId: UserTypeEnum;
 
-    @Column('bigint', { name: 'user_address_id' })
+    @Column('bigint', { 
+        name: 'user_address_id',
+        transformer: new ColumnNumericTransformer()
+})
     userAddressId: number;
 
     @Column('varchar', { name: 'user_password' })

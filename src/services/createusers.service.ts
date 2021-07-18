@@ -14,9 +14,9 @@ export class CreateUsersService {
     @InjectRepository(UserRepository)
     private usersRepository: UserRepository,
     @InjectRepository(Producer)
-    private ProducersRepository: Repository<Producer>,
+    private producers: Repository<Producer>,
     @InjectRepository(Address)
-    private AddressesRepository: Repository<Address>,
+    private addresses: Repository<Address>,
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<any> {
@@ -40,7 +40,7 @@ export class CreateUsersService {
       const producer: Producer = new Producer();
       producer.producerSymbol = createUserDto.producersymbol.toUpperCase();
       producer.producerSerialCount = 0;
-      const producerid = await this.ProducersRepository.save(producer);
+      const producerid = await this.producers.save(producer);
       user.userProducerId = producerid.producerId;
     }
     address.addressAddress = createUserDto.address;
@@ -49,7 +49,7 @@ export class CreateUsersService {
     address.addressPostcode = createUserDto.postcode;
     address.addressCity = createUserDto.city;
     address.addressCountry = createUserDto.country;
-    const addressid = await this.AddressesRepository.save(address);
+    const addressid = await this.addresses.save(address);
     user.userName = createUserDto.name;
     user.userLastname = createUserDto.lastname;
     user.userEmail = createUserDto.email;
@@ -60,7 +60,7 @@ export class CreateUsersService {
     console.log(user);
     try {
       await this.usersRepository.save(user);
-      return ;
+      return { };
     } catch (error) {
       if (error) {
         throw new HttpException(

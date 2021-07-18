@@ -8,6 +8,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from 'src/interceptors/transform.interceptor';
 import { AuthModule } from 'src/modules/auth.module';
 import { AuthController } from 'src/controllers/auth.controller';
+import { WinesModule } from './createwines.module';
 
 @Module({
   imports: [
@@ -18,6 +19,8 @@ import { AuthController } from 'src/controllers/auth.controller';
 ),
   UsersModule,
   AuthModule,
+  WinesModule,
+  
   ],
   controllers: [AuthController],
   providers:[

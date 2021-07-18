@@ -21,7 +21,9 @@ export class Producer extends BaseEntity {
   @Column('varchar', { name: 'producer_symbol', length: 4 })
   producerSymbol: string;
 
-  @Column('bigint', { name: 'producer_serial_count' })
+  @Column('bigint', { 
+    name: 'producer_serial_count' ,
+    transformer: new ColumnNumericTransformer()})
   producerSerialCount: number;
 
   @OneToOne(() => User, (user:User) => user.ProducerId)

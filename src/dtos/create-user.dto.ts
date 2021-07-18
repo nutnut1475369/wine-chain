@@ -1,4 +1,4 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, MaxLength, MinLength } from 'class-validator';
 import { UserRoleEnum } from '@enums/user-role.enum';
 import { UserTypeEnum } from '@enums/user-type.enum';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
@@ -28,6 +28,7 @@ export class CreateUserDto {
     @ApiPropertyOptional()
     @IsOptional()
 	@MaxLength(4)
+	@MinLength(3)
     producersymbol: string;
 
     @ApiProperty()
