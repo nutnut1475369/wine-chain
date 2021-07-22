@@ -82,13 +82,4 @@ describe('AuthService', () => {
           );
     }
   });
-  it('should return JWT object when credentials are valid', async () => {
-    jest.spyOn(bcrypt, 'compare').mockImplementation(() => {
-      return new Promise((resolve) => {
-        return resolve(true);
-      });
-    });
-    const res = await authService.signin(mockUserSignin);
-    expect(res.Token).toBeDefined();
-  });  
 });
