@@ -30,12 +30,7 @@ export class CreateUserDto {
 	@MaxLength(4)
 	@MinLength(3)
     producersymbol: string;
-
-    @ApiProperty()
-    @IsNotEmpty()
-    @IsEnum(UserRoleEnum, { each: true })
-    role: UserRoleEnum;
-
+    
     @IsNotEmpty()
     @IsEnum(UserTypeEnum, { each: true })
     type: UserTypeEnum;
