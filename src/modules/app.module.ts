@@ -9,6 +9,7 @@ import { TransformInterceptor } from 'src/interceptors/transform.interceptor';
 import { AuthModule } from 'src/modules/auth.module';
 import { AuthController } from 'src/controllers/auth.controller';
 import { WinesModule } from './createwines.module';
+import { TransferModule } from './transfer.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { WinesModule } from './createwines.module';
   UsersModule,
   AuthModule,
   WinesModule,
+  TransferModule
   
   ],
   controllers: [AuthController],
