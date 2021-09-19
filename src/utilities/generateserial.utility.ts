@@ -2,9 +2,9 @@ export class GenerateSerial {
   static generate(serial: number, number: number, type: number) {
     if (type === 1) {
       return this.serailId(serial) + this.serailSymbolShort(number)
-    }
+    }else{
     return this.serailId(serial) + this.serailSymbolLong(number)
-
+}
   }
   static serialSymbol( number: number, type: number){
     if (type === 1) {

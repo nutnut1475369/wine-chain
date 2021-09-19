@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CreateUsersService } from '../services/createusers.service';
+import { CreateUsersService } from '../services/create-users.service';
 import { UsersController } from '../controllers/createusers.controller';
 import { AddressRepository } from '@repositories/addresses.repository';
 import { ProducerRepository } from '@repositories/producers.repository';
 import { TransferRepository } from '@repositories/transfers.repository';
 import { UserRepository } from '@repositories/users.repository';
 import { WineRepository } from '@repositories/wines.repository';
-import { SigninUserService } from '@services/signinuser.service';
+import { SigninUserService } from '@services/signin-users.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([

@@ -1,7 +1,7 @@
-import { IsEnum, IsNotEmpty } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { WineTypeEnum } from '@enums/wine-type.enum';
-export class CreateWineDto {
+export class WineDto {
 
     @ApiProperty()
     @IsNotEmpty()
@@ -20,8 +20,8 @@ export class CreateWineDto {
     @IsNotEmpty()
     regions:string
     
-    @ApiProperty()
-    @IsNotEmpty()
+    @ApiPropertyOptional()
+    @IsOptional()
     description:string
     
     @ApiProperty()

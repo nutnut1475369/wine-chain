@@ -36,6 +36,7 @@
     "dotenv": "^10.0.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
+    "nestjs-typeorm-paginate": "^2.5.3",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
@@ -44,7 +45,8 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.2.34"
+    "typeorm": "^0.2.34",
+    "typeorm-pagination": "^2.0.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.6.0",
@@ -86,6 +88,16 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "@enums/(.*)": "<rootDir>/enums/$1",
+      "@guard/(.*)": "<rootDir>/guard/$1",
+      "@entities/(.*)": "<rootDir>/entities/$1",
+      "@repositories/(.*)": "<rootDir>/repositories/$1",
+      "@services/(.*)": "<rootDir>/services/$1",
+      "@dtos/(.*)": "<rootDir>/dtos/$1",
+      "@utilities/(.*)": "<rootDir>/utilities/$1",
+      "@configs/(.*)": "<rootDir>/configs/$1"
+    }
   }
 }
