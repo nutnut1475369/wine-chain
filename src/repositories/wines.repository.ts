@@ -61,3 +61,4 @@ export class WineRepository extends Repository<Wine> {
     return paginate<Wine>(searchData,options);
   }
 }
+
