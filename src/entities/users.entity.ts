@@ -12,7 +12,7 @@
     } from 'typeorm';
     import { Address } from './addresses.entity';
     import { Producer } from './producers.entity';
-import { ColumnNumericTransformer } from './transformer/column-numeric.transformer';
+    import { ColumnNumericTransformer } from './transformer/column-numeric.transformer';
     import { Wine } from './wines.entity';
 
     @Index('fk_user_producer_id', ['userProducerId'], {})

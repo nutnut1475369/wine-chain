@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { UsersModule } from './createusers.module';
+import { UsersModule } from './create-users.module';
 import { DbConfig } from '@configs/db/db.config';
 import { envConfig } from '@configs/envConfig';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from 'src/interceptors/transform.interceptor';
 import { AuthModule } from 'src/modules/auth.module';
 import { AuthController } from 'src/controllers/auth.controller';
-import { WinesModule } from './createwines.module';
+import { WinesModule } from './create-wines.module';
 import { TransferModule } from './transfer.module';
+import { SearchModule } from './search.module';
+
 
 @Module({
   imports: [
@@ -21,7 +23,8 @@ import { TransferModule } from './transfer.module';
   UsersModule,
   AuthModule,
   WinesModule,
-  TransferModule
+  TransferModule,
+  SearchModule
   
   ],
   controllers: [AuthController],

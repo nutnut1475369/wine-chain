@@ -4,7 +4,7 @@ import { ProducerRepository } from '@repositories/producers.repository';
 import { TransferRepository } from '@repositories/transfers.repository';
 import { UserRepository } from '@repositories/users.repository';
 import { WineRepository } from '@repositories/wines.repository';
-import { CreateWineService } from '@services/createwine.service';
+import { CreateWineService } from '@services/create-wines.service';
 import { CreateWineController } from 'src/controllers/createwines.controller';
 import { JwtStrategy } from 'src/strategy/jwt.strategy';
 import { AuthModule } from './auth.module';
