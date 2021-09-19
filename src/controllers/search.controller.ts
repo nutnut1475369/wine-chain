@@ -11,7 +11,7 @@ export class SearchController{
     @Post('search')
     async searchWine(
         @Body() searchDto:SearchDto
-        ):Promise<Wine[]>{
+        ):Promise<any>{
         return await this.searchService.search(searchDto)
     }
 }
