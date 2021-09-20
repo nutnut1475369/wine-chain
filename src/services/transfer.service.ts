@@ -11,7 +11,7 @@ import { Repository } from "typeorm";
 export class TransferService{
     constructor(
         @InjectRepository(Transfer)
-        private transfer:Repository<Transfer>,        
+        private transfer:TransferRepository,        
         @InjectRepository(WineRepository)
         private wineRepository:WineRepository,        
         @InjectRepository(UserRepository)
@@ -42,7 +42,7 @@ export class TransferService{
                 {
                     statusCode: HttpStatus.NOT_FOUND,
                     error: "you're not owner this wine."
-                },HttpStatus.NOT_ACCEPTABLE
+                },HttpStatus.NOT_FOUND
             )
         }
         console.log(userTar)
@@ -52,8 +52,9 @@ export class TransferService{
         transferWine.transferUserIdTar = userTar.userId
         transferWine.transferWineId = wine.wineId
         wine.wineOwnerUserId = userTar.userId
-        await wine.save()
+        await this.wineRepository.save(wine)
         await this.transfer.save(transferWine)
+        console.log(transferWine);
         return {}
     }
 }
